@@ -9,17 +9,24 @@ import UIKit
 
 class ViewController: UIViewController {
     //========Outlets==========
+    
+    //Sliders
     @IBOutlet var sliderRed: UISlider!
     @IBOutlet var indicatorRed1: UILabel!
-    @IBOutlet var indicatorRed2: UILabel!
     
     @IBOutlet var sliderGreen: UISlider!
     @IBOutlet var indicatorGreen1: UILabel!
-    @IBOutlet var indicatorGreen2: UILabel!
 
     @IBOutlet var sliderBlue: UISlider!
     @IBOutlet var indicatorBlue1: UILabel!
-    @IBOutlet var indicatorBlue2: UILabel!
+    //Views
+    @IBOutlet var viewField: UIView!
+    //TextFields
+    @IBOutlet var enterRed: UITextField!
+    @IBOutlet var enterGreen: UITextField!
+    @IBOutlet var enterBlue: UITextField!
+    //Buttons
+    @IBOutlet var doneButton: UIView!
     
     
     //=======Methods============
@@ -43,13 +50,15 @@ class ViewController: UIViewController {
         sliderBlue.maximumValue = 1
         sliderBlue.tintColor = .blue
         
+        viewField.layer.cornerRadius = 30
         
     }
 
+    
+    //==========IBActions==========
     @IBAction func sliderRedAction() {
         changeColor()
         indicatorRed1.text = String(roundNumber(number: sliderRed.value))
-        indicatorRed2.text = String(roundNumber(number: sliderRed.value))
         
         //для смены цвета ползунка в соответствии с цветом заднего фона
         //sliderRed.minimumTrackTintColor = view.backgroundColor?.withAlphaComponent(CGFloat(sliderRed.value))
@@ -59,7 +68,6 @@ class ViewController: UIViewController {
     @IBAction func sliderGreenAction() {
         changeColor()
         indicatorGreen1.text = String(roundNumber(number: sliderGreen.value))
-        indicatorGreen2.text = String(roundNumber(number: sliderGreen.value))
         
         //для смены цвета ползунка в соответствии с цветом заднего фона
         //sliderGreen.minimumTrackTintColor = view.backgroundColor?.withAlphaComponent(CGFloat(sliderGreen.value))
@@ -68,12 +76,22 @@ class ViewController: UIViewController {
     @IBAction func sliderBlueAction() {
         changeColor()
         indicatorBlue1.text = String(roundNumber(number: sliderBlue.value))
-        indicatorBlue2.text = String(roundNumber(number: sliderBlue.value))
         
         //для смены цвета ползунка в соответствии с цветом заднего фона
         //sliderBlue.minimumTrackTintColor = view.backgroundColor?.withAlphaComponent(CGFloat(sliderBlue.value))
         
     }
+    
+    
+    @IBAction func buttonDonePress() {
+        guard let inputNum = enterRed.text, !inputNum.isEmpty else{return}
+        if let _ = Double(inputNum) {
+            sliderRed.value = Float((enterRed.text)!)!
+            indicatorRed1.text = String(roundNumber(number: sliderRed.value))
+        }
+    }
+    
+    
     
 }
 
