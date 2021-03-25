@@ -29,44 +29,49 @@ class ViewController: UIViewController {
         sliderRed.value = 1
         sliderRed.minimumValue = 0
         sliderRed.maximumValue = 1
+        sliderRed.tintColor = .red
         
         //Green Slider's setup
         sliderGreen.value = 1
         sliderGreen.minimumValue = 0
         sliderGreen.maximumValue = 1
+        sliderGreen.tintColor = .green
         
         //Blue Slider's setup
         sliderBlue.value = 1
         sliderBlue.minimumValue = 0
         sliderBlue.maximumValue = 1
+        sliderBlue.tintColor = .blue
         
         
     }
 
     @IBAction func sliderRedAction() {
         changeColor()
- let backgroundColor = view.backgroundColor
-//        view.backgroundColor = backgroundColor?.withAlphaComponent(CGFloat(sliderRed.value))
         indicatorRed1.text = String(roundNumber(number: sliderRed.value))
         indicatorRed2.text = String(roundNumber(number: sliderRed.value))
- sliderRed.minimumTrackTintColor = backgroundColor?.withAlphaComponent(CGFloat(sliderRed.value))
+        
+        //для смены цвета ползунка в соответствии с цветом заднего фона
+        //sliderRed.minimumTrackTintColor = view.backgroundColor?.withAlphaComponent(CGFloat(sliderRed.value))
     }
     
     
     @IBAction func sliderGreenAction() {
         changeColor()
-        let backgroundColor = view.backgroundColor
         indicatorGreen1.text = String(roundNumber(number: sliderGreen.value))
         indicatorGreen2.text = String(roundNumber(number: sliderGreen.value))
-        sliderGreen.minimumTrackTintColor = backgroundColor?.withAlphaComponent(CGFloat(sliderGreen.value))
+        
+        //для смены цвета ползунка в соответствии с цветом заднего фона
+        //sliderGreen.minimumTrackTintColor = view.backgroundColor?.withAlphaComponent(CGFloat(sliderGreen.value))
     }
     
     @IBAction func sliderBlueAction() {
         changeColor()
-        let backgroundColor = view.backgroundColor
         indicatorBlue1.text = String(roundNumber(number: sliderBlue.value))
         indicatorBlue2.text = String(roundNumber(number: sliderBlue.value))
-        sliderBlue.minimumTrackTintColor = backgroundColor?.withAlphaComponent(CGFloat(sliderBlue.value))
+        
+        //для смены цвета ползунка в соответствии с цветом заднего фона
+        //sliderBlue.minimumTrackTintColor = view.backgroundColor?.withAlphaComponent(CGFloat(sliderBlue.value))
         
     }
     
