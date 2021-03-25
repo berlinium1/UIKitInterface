@@ -84,21 +84,22 @@ class ViewController: UIViewController {
     
     
     @IBAction func buttonDonePress() {
-        guard let inputNumRed = enterRed.text, !inputNumRed.isEmpty else{return}
-        if let _ = Double(inputNumRed) {
+        //guard let inputNumRed = enterRed.text, !inputNumRed.isEmpty else{return}
+        if let _ = Double(enterRed.text!) {
             sliderRed.value = Float((enterRed.text)!)!
             indicatorRed1.text = String(roundNumber(number: sliderRed.value))
         }
-        guard let inputNumGreen = enterGreen.text, !inputNumGreen.isEmpty else{return}
-        if let _ = Double(inputNumGreen) {
+        //guard let inputNumGreen = enterGreen.text, !inputNumGreen.isEmpty else{return}
+        if let _ = Double(enterGreen.text!) {
             sliderGreen.value = Float((enterGreen.text)!)!
             indicatorGreen1.text = String(roundNumber(number: sliderGreen.value))
         }
-        guard let inputNumBlue = enterBlue.text, !inputNumBlue.isEmpty else{return}
-        if let _ = Double(inputNumBlue) {
+        //guard let inputNumBlue = enterBlue.text, !inputNumBlue.isEmpty else{return}
+        if let _ = Double(enterBlue.text!) {
             sliderBlue.value = Float((enterBlue.text)!)!
             indicatorBlue1.text = String(roundNumber(number: sliderBlue.value))
         }
+        changeColor()
     }
     
     
@@ -106,6 +107,12 @@ class ViewController: UIViewController {
 }
 
 extension ViewController{
+    
+//    func isEmpty(text : String) -> Bool {
+//        let nullStr = ""
+//        guard nullStr == text, !inputNumRed.isEmpty else{return true}
+//        return false
+//    }
     // вывод числа до разряда сотых
     func roundNumber(number: Float) -> Float {
         var result : Float;
@@ -116,6 +123,6 @@ extension ViewController{
     
     // смена цвета фона въю-контроллера в соответствии с палитрой RGB
     func changeColor(){
-        view.backgroundColor = UIColor(red: CGFloat(sliderRed.value), green: CGFloat(sliderGreen.value), blue: CGFloat(sliderBlue.value), alpha: 1)
+        viewField.backgroundColor = UIColor(red: CGFloat(sliderRed.value), green: CGFloat(sliderGreen.value), blue: CGFloat(sliderBlue.value), alpha: 1)
     }
 }
