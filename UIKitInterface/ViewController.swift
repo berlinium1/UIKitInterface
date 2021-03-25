@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
     //========Outlets==========
     
     //Sliders
@@ -32,6 +32,7 @@ class ViewController: UIViewController {
     //=======Methods============
     override func viewDidLoad() {
         super.viewDidLoad()
+    
         //Red Slider's setup
         sliderRed.value = 1
         sliderRed.minimumValue = 0
@@ -51,9 +52,9 @@ class ViewController: UIViewController {
         sliderBlue.tintColor = .blue
         
         viewField.layer.cornerRadius = 30
+        self .enterRed.delegate = self
         
     }
-
     
     //==========IBActions==========
     @IBAction func sliderRedAction() {
@@ -108,11 +109,6 @@ class ViewController: UIViewController {
 
 extension ViewController{
     
-//    func isEmpty(text : String) -> Bool {
-//        let nullStr = ""
-//        guard nullStr == text, !inputNumRed.isEmpty else{return true}
-//        return false
-//    }
     // вывод числа до разряда сотых
     func roundNumber(number: Float) -> Float {
         var result : Float;
@@ -125,4 +121,14 @@ extension ViewController{
     func changeColor(){
         viewField.backgroundColor = UIColor(red: CGFloat(sliderRed.value), green: CGFloat(sliderGreen.value), blue: CGFloat(sliderBlue.value), alpha: 1)
     }
+    
+    // для возвращения с клавиатуры при вводе
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return enterRed.resignFirstResponder()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
 }
